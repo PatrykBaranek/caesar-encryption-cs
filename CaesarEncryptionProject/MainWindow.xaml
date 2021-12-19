@@ -38,7 +38,7 @@
                 <Label Grid.Column="1" Content="Wynik Szyfrowania" Foreground="White" FontSize="20"/>
                 <TextBox IsReadOnly="True" Background="White" TextWrapping="Wrap" Height="70" Width="240" Grid.Row="1" Grid.Column="1"  x:Name="encryptionResultTxt" />
 
-                <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" Height="60" Click="ButtonStartEncrypiton_Click">Szyfruj</Button>
+                <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" Height="60" x:Name="encriptionBtn" Click="ButtonStartEncrypiton_Click">Szyfruj</Button>
             </Grid>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Margin="0,1,0,0">
@@ -58,7 +58,7 @@
 
                 <Label Grid.Column="1" Content="Wynik Deszyfracji" Foreground="White" FontSize="20"/>
                 <TextBox IsReadOnly="True" Background="White" TextWrapping="Wrap" Height="70" Width="240" Grid.Row="1" Grid.Column="1"  x:Name="decryptionResultTxt" />
-                <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" Height="60" Click="ButtonStartDecrypiton_Click">Deszyfruj</Button>
+                <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" Height="60" x:Name="decriptionBtn" Click="ButtonStartDecrypiton_Click">Deszyfruj</Button>
             </Grid>
         </StackPanel>
     </Grid>
