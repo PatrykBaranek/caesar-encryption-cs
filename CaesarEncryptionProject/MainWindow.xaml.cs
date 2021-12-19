@@ -27,11 +27,26 @@ namespace CaesarEncryptionProject
 
         private void ButtonStartEncrypiton_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (!string.IsNullOrEmpty(encryptionInputTxt.Text))
+            {
+                encryptionResultTxt.Text = encryptionKey.SelectedItem.ToString();
+
+            }
         }
 
         private void ButtonStartDecrypiton_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void InsertValuesToComboBox(object sender, RoutedEventArgs e)
+        {
+            for (int i = 1; i <= 34; i++)
+            {
+                encryptionKey.Items.Add(i.ToString());
+                decyptionKey.Items.Add(i.ToString());
+            }
+
 
         }
     }

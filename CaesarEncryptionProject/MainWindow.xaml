@@ -27,18 +27,22 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="15*" />
                 </Grid.ColumnDefinitions>
 
-                <Label Content="Szyfrowanie" Foreground="White" FontSize="20"/>
-                <TextBox Background="White" TextWrapping="Wrap" Height="70" Width="250" Grid.Row="1" Grid.Column="0"  x:Name="encryptionInputTxt" />
+                <Label Content="Szyfrowanie" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBox Background="White" TextWrapping="Wrap" Grid.Row="1" Grid.Column="0"  x:Name="encryptionInputTxt" Margin="25,7,25,7" />
 
-                <Label Grid.Column="1" Content="Wynik Szyfrowania" Foreground="White" FontSize="20"/>
-                <TextBox IsReadOnly="True" Background="White" TextWrapping="Wrap" Height="70" Width="240" Grid.Row="1" Grid.Column="1"  x:Name="encryptionResultTxt" />
+                <Label Grid.Column="1" Content="Wynik Szyfrowania" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBox IsReadOnly="True" Background="White" TextWrapping="Wrap" Grid.Row="1" Grid.Column="1"  x:Name="encryptionResultTxt" Margin="27,7,27,7" />
 
-                <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" Height="60" x:Name="encriptionBtn" Click="ButtonStartEncrypiton_Click">Szyfruj</Button>
+                <Label Content="Klucz" Grid.Column="2" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <ComboBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" Width="40" x:Name="encryptionKey"></ComboBox>
+                
+                <Button Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" Height="60" x:Name="encriptionBtn" Click="ButtonStartEncrypiton_Click">Szyfruj</Button>
             </Grid>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Margin="0,1,0,0">
@@ -48,17 +52,24 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="15*" />
                 </Grid.ColumnDefinitions>
 
-                <Label Content="Deszyfracja" Foreground="White" FontSize="20"/>
-                <TextBox Background="White" TextWrapping="Wrap" Height="70" Width="250" Grid.Row="1" Grid.Column="0"  x:Name="decryptionInputTxt" />
+                <Label Content="Deszyfracja" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBox Background="White" TextWrapping="Wrap" Height="70" Width="250" Grid.Row="1" Grid.Column="0"  x:Name="decryptionInputTxt" Margin="25,7,25,7"  />
 
-                <Label Grid.Column="1" Content="Wynik Deszyfracji" Foreground="White" FontSize="20"/>
-                <TextBox IsReadOnly="True" Background="White" TextWrapping="Wrap" Height="70" Width="240" Grid.Row="1" Grid.Column="1"  x:Name="decryptionResultTxt" />
-                <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" Height="60" x:Name="decriptionBtn" Click="ButtonStartDecrypiton_Click">Deszyfruj</Button>
+                <Label Grid.Column="1" Content="Wynik Deszyfracji" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBox IsReadOnly="True" Background="White" TextWrapping="Wrap" Height="70" Width="240" Grid.Row="1" Grid.Column="1"  x:Name="decryptionResultTxt" Margin="25,7,25,7"  />
+
+                <Label Content="Klucz" Grid.Column="2" Foreground="White" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <ComboBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" Width="40" x:Name="decyptionKey" Loaded="InsertValuesToComboBox">
+                    
+                </ComboBox>
+
+                <Button Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" Height="60" x:Name="decriptionBtn" Click="ButtonStartDecrypiton_Click">Deszyfruj</Button>
             </Grid>
         </StackPanel>
     </Grid>
