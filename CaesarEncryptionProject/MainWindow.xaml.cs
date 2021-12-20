@@ -29,7 +29,7 @@ namespace CaesarEncryptionProject
         {
             try
             {
-                if (!string.IsNullOrEmpty(encryptionInputTxt.Text) && !string.IsNullOrEmpty(encryptionKey.SelectedItem.ToString()))
+                if (!string.IsNullOrEmpty(encryptionInputTxt.Text))
                 {
                     var inputString = encryptionInputTxt.Text;
                     var encryptionKeyValue = encryptionKey.SelectedItem.ToString();
@@ -61,13 +61,13 @@ namespace CaesarEncryptionProject
 
         private void InsertValuesToComboBox(object sender, RoutedEventArgs e)
         {
+
             for (int i = 1; i <= 34; i++)
             {
                 encryptionKey.Items.Add(i.ToString());
                 decyptionKey.Items.Add(i.ToString());
             }
-
-
+            
         }
     }
 }

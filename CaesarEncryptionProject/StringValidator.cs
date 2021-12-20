@@ -9,14 +9,31 @@ namespace CaesarEncryptionProject
 {
     public class StringValidator
     {
-        private string _stringValue;
-
-        private Regex regex = new Regex("/\\[!@#\\$%\\^&\\*\\(\\)_\\+\\\\-=\\\\\\[\\\\]\\{\\};':\"\\\\\\\\|,\\.<>\\\\/\\?0-9]\\+/", RegexOptions.IgnoreCase);
-
+        private readonly string _stringValue;
 
         public StringValidator(string stringValue)
         {
             _stringValue = stringValue;
+        }
+
+        private string CheckValue(string stringValue)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+
+            for(int i = 0; i < stringValue.Length; i++)
+            {
+                if (CaesarEncryption.PolishLettersList.Contains(stringValue[i]))
+                {
+                    stringBuilder.Append(stringValue[i]);
+                }
+                else
+                {
+                    throw new Exception("Input value can't include special characters and numbers");
+                }
+            }
+
+            return stringBuilder.ToString();
         }
 
 
@@ -24,10 +41,6 @@ namespace CaesarEncryptionProject
         {
             StringBuilder result = new StringBuilder();
 
-            //if (!regex.IsMatch(_stringValue))
-            //{
-            //    throw new Exception("Input value can't include special characters and numbers");
-            //}
 
             for (int i = 0; i < _stringValue.Length; i++)
             {
@@ -40,7 +53,9 @@ namespace CaesarEncryptionProject
 
             }
 
-            return result.ToString();
+            var checkedValue = CheckValue(result.ToString());
+
+            return checkedValue;
         }
 
 
