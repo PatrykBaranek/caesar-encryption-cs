@@ -2,25 +2,47 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CaesarEncryptionProject
 {
     public class StringValidator
     {
-        public string StringValue { get; set; }
+        private string _stringValue;
 
-        private char[] _polishLettersArray = new char[]
-        {
-            'A','Ą','B','C','Ć','D','E','Ę','F','G','H','I','J','K','L','Ł','M','N','Ń','O','Ó','P','Q','R','S','Ś','T','U','V','W','X','Z','Ź','Ż'
-        };
+        private Regex regex = new Regex("/\\[!@#\\$%\\^&\\*\\(\\)_\\+\\\\-=\\\\\\[\\\\]\\{\\};':\"\\\\\\\\|,\\.<>\\\\/\\?0-9]\\+/", RegexOptions.IgnoreCase);
+
 
         public StringValidator(string stringValue)
         {
-            StringValue = stringValue;
+            _stringValue = stringValue;
         }
 
-        
+
+        public string GetValidatedString()
+        {
+            StringBuilder result = new StringBuilder();
+
+            //if (!regex.IsMatch(_stringValue))
+            //{
+            //    throw new Exception("Input value can't include special characters and numbers");
+            //}
+
+            for (int i = 0; i < _stringValue.Length; i++)
+            {
+                if (char.IsWhiteSpace(_stringValue[i]))
+                {
+                    continue;
+                }
+
+                result.Append(_stringValue[i]);
+
+            }
+
+            return result.ToString();
+        }
+
 
 
     }

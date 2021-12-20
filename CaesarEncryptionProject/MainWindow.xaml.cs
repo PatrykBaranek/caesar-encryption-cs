@@ -27,10 +27,30 @@ namespace CaesarEncryptionProject
 
         private void ButtonStartEncrypiton_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(encryptionInputTxt.Text))
+            try
             {
-                encryptionResultTxt.Text = encryptionKey.SelectedItem.ToString();
+                if (!string.IsNullOrEmpty(encryptionInputTxt.Text) && !string.IsNullOrEmpty(encryptionKey.SelectedItem.ToString()))
+                {
+                    var inputString = encryptionInputTxt.Text;
+                    var encryptionKeyValue = encryptionKey.SelectedItem.ToString();
 
+                    var encryptionString = new CaesarEncryption(inputString, encryptionKeyValue);
+
+                    encryptionResultTxt.Text = encryptionString.GetEncryptedValue();
+
+
+                }
+                else
+                {
+                    throw new Exception("Insert Key Value or String Value");
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
