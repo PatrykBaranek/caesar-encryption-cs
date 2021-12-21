@@ -56,7 +56,31 @@ namespace CaesarEncryptionProject
 
         private void ButtonStartDecrypiton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (!string.IsNullOrEmpty(decryptionInputTxt.Text))
+                {
+                    var inputString = decryptionInputTxt.Text;
+                    var decryptionKeyValue = decyptionKey.SelectedItem.ToString();
 
+                    var encryptionString = new CaesarEncryption(inputString, decryptionKeyValue);
+
+                    decryptionResultTxt.Text = encryptionString.GetDecryptedValue();
+
+
+                }
+                else
+                {
+                    throw new Exception("Insert Key Value or String Value");
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void InsertValuesToComboBox(object sender, RoutedEventArgs e)

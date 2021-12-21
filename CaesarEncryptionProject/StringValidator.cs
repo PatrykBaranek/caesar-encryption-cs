@@ -29,7 +29,7 @@ namespace CaesarEncryptionProject
                 }
                 else
                 {
-                    throw new Exception("Input value can't include special characters and numbers");
+                    throw new Exception($"Input value can't include special characters and numbers: {stringValue[i]}");
                 }
             }
 

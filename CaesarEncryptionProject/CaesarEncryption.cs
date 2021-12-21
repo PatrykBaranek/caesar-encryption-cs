@@ -8,14 +8,14 @@ namespace CaesarEncryptionProject
 {
     public class CaesarEncryption
     {
-        private string _inputValue;
-        private int _keyValue;
+        private readonly string _inputValue;
+        private readonly int _keyValue;
         private string _encryptedValue;
         private string _decryptedValue;
 
         public static List<char> PolishLettersList = new List<char>()
         {
-            'A','Ą','B','C','Ć','D','E','Ę','F','G','H','I','J','K','L','Ł','M','N','Ń','O','Ó','P','Q','R','S','Ś','T','U','V','W','X','Z','Ź','Ż'
+            'A','Ą','B','C','Ć','D','E','Ę','F','G','H','I','J','K','L','Ł','M','N','Ń','O','Ó','P','Q','R','S','Ś','T','U','V','W','X','Y','Z','Ź','Ż'
         };
 
         public CaesarEncryption(string inputValue, string keyValue)
@@ -39,34 +39,46 @@ namespace CaesarEncryptionProject
             {
                 case Method.Encryption:
 
-
-
                     for (int i = 0; i < validatedInputValue.Length; i++)
                     {
                         var letterIndexInList = PolishLettersList.IndexOf(validatedInputValue[i]);
-                        var cipherShiftValue = (letterIndexInList + _keyValue) % 34;
+                        var cipherShiftValue = (letterIndexInList + _keyValue) % 35;
 
                         if (cipherShiftValue > (PolishLettersList.Count - 1))
                         {
-                            cipherShiftValue = cipherShiftValue - 34;
+                            cipherShiftValue -= 35;
                             result.Append(PolishLettersList[cipherShiftValue]);
+
+                            continue;
                         }
-                        
+
                         result.Append(PolishLettersList[cipherShiftValue]);
                     }
+
                     break;
 
                 case Method.Decryption:
 
+                    for (int i = 0; i < validatedInputValue.Length; i++)
+                    {
+                        var letterIndexInList = PolishLettersList.IndexOf(validatedInputValue[i]);
+                        var cipherShiftValue = (letterIndexInList - _keyValue) % 35;
+
+                        if (cipherShiftValue < 0)
+                        {
+                            cipherShiftValue += 35;
+                            result.Append(PolishLettersList[cipherShiftValue]);
+
+                            continue;
+                        }
+                        
+
+                        result.Append(PolishLettersList[cipherShiftValue]);
+                    }
 
                     break;
 
             }
-
-
-
-
-
 
             return result.ToString();
         }
